@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="MultiVendor_SaaS_ERD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Entities -->
+        <mxCell id="SubscriptionPlan" value="SubscriptionPlan&#10;----------------------&#10;plan_id (PK)&#10;plan_name&#10;monthly_fee&#10;product_listing_limit&#10;commission_percentage&#10;features" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Vendor" value="Vendor&#10;----------------------&#10;vendor_id (PK)&#10;business_name&#10;owner_name&#10;email (UNIQUE)&#10;phone&#10;business_address&#10;vat_number&#10;join_date&#10;account_status&#10;plan_id (FK)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="400" y="50" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Product" value="Product&#10;----------------------&#10;product_id (PK)&#10;vendor_id (FK)&#10;product_name&#10;brand&#10;base_price&#10;description&#10;status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="400" y="320" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ProductVariation" value="ProductVariation&#10;----------------------&#10;variation_id (PK)&#10;product_id (FK)&#10;size&#10;color&#10;additional_price&#10;sku (UNIQUE)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="750" y="320" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Category" value="Category&#10;----------------------&#10;category_id (PK)&#10;category_name&#10;description" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="320" width="240" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Warehouse" value="Warehouse&#10;----------------------&#10;warehouse_id (PK)&#10;vendor_id (FK)&#10;warehouse_name&#10;location&#10;capacity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="750" y="50" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Customer" value="Customer&#10;----------------------&#10;customer_id (PK)&#10;full_name&#10;email (UNIQUE)&#10;phone&#10;address&#10;registration_date&#10;status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="50" y="600" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Order" value="Order&#10;----------------------&#10;order_id (PK)&#10;customer_id (FK)&#10;order_date&#10;order_status&#10;total_amount" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="400" y="600" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="OrderItem" value="OrderItem (Weak)&#10;----------------------&#10;order_item_id (PK)&#10;order_id (FK)&#10;variation_id (FK)&#10;vendor_id (FK)&#10;quantity&#10;unit_price&#10;subtotal" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;" vertex="1" parent="1">
+          <mxGeometry x="750" y="600" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Payment" value="Payment&#10;----------------------&#10;payment_id (PK)&#10;order_id (FK, UNIQUE)&#10;payment_method&#10;amount&#10;payment_date&#10;payment_status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="600" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="Return" value="Return&#10;----------------------&#10;return_id (PK)&#10;order_id (FK)&#10;variation_id (FK)&#10;reason&#10;return_status&#10;request_date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="820" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
